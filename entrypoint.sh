@@ -7,11 +7,11 @@ mkdir -p "$OUTPUT"
 
 echo "Loading config files from $INPUT"
 
-for file in "$INPUT/*"; do
-  if [ -f "$$file" ]; then
-    filename=$(basename "$$file")
-    envsubst <"$$file" >"$OUTPUT/$$filename"
-    echo "Loaded $$filename"
+for file in "$INPUT"/*; do
+  if [ -f "$file" ]; then
+    echo "Loaded $file"
+    filename=$(basename "$file")
+    envsubst <"$file" >"$OUTPUT/$filename"
   fi
 done
 
